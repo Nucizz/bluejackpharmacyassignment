@@ -54,4 +54,99 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingBottom="100dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your health, Our priority."
+                android:fontFamily="@font/sfpro_bold"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome to Bluejack Pharmacy, where we are dedicated to providing you with the highest quality healthcare products and services. Our pharmacy was founded by the Bluejackets Community, and we take pride in being a part of this vibrant community that we serve."
+                android:fontFamily="@font/sfpro_light"
+                android:textColor="@color/dark"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:padding="10dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/logo_black"
+                app:srcCompat="@drawable/logo_black"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Our Vision"
+                android:fontFamily="@font/sfpro_bold"
+                android:textColor="@color/accent_dark"
+                android:textSize="24dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="To be the leading provider of healthcare products and services in Indonesia, delivering exceptional customer service and personalized care to you."
+                android:fontFamily="@font/sfpro_light"
+                android:textColor="@color/dark"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Our Mission"
+                android:fontFamily="@font/sfpro_bold"
+                android:textColor="@color/accent_dark"
+                android:textSize="24dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfpro_light"
+                android:text="To improve community health through accessible, high-quality care delivered with compassion, excellence and to exceed their expectations through innovation and continuous improvement."
+                android:textColor="@color/dark"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find Us"
+                android:fontFamily="@font/sfpro_bold"
+                android:textColor="@color/accent_dark"
+                android:textSize="24dp"
+                android:padding="10dp"/>
+
+            <com.google.android.gms.maps.MapView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/googleMaps"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>

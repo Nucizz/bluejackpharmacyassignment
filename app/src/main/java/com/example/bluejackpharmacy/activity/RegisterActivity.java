@@ -94,6 +94,17 @@ public class RegisterActivity extends Activity {
         return newPhone;
     }
 
+    boolean dupeHandler(String email, String phone) {
+        for(User user : Data.userList) {
+            if(email.equals(user.getEmail())) {
+                return false;
+            } else if(phone.equals(user.getPhone())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
      void registerValidate() {
         String name = nameText.getText().toString();
         String email = emailText.getText().toString();
@@ -135,7 +146,17 @@ public class RegisterActivity extends Activity {
              return;
          }
 
-         User newUser = new User(Data.userList.size()+1, name, email, User.hashPassword(password), phone);
+         if(!dupeHandler(email, phone)) {
+             Toast.makeText(getApplicationContext(), "Account already exist", Toast.LENGTH_SHORT).show();
+             return;
+         }
+
+         int id = 0;
+         if (!Data.userList.isEmpty()) {
+             id = Data.userList.get(Data.userList.size()-1).getId()+1;
+         }
+
+         User newUser = new User(id, name, email, User.hashPassword(password), phone);
          Data.userList.add(newUser);
          User.setUser(newUser);
          startActivity(new Intent(this, HomeActivity.class));

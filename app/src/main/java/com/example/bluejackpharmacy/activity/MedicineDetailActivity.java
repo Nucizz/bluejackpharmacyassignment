@@ -87,9 +87,16 @@ public class MedicineDetailActivity extends Activity {
 
         purchaseButton = findViewById(R.id.purchaseButton);
         purchaseButton.setOnClickListener(e -> {
-            DateFormat dateFormat = new SimpleDateFormat("dd mm yyyy");
+            DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm");
             Calendar cal = Calendar.getInstance();
-            Data.transactionList.add(new Transaction(Data.userList.size()+1, User.currentUser, item, quantity, dateFormat.format(cal.getTime())));
+
+            if(Data.allTransactionList.isEmpty()) {
+                Data.allTransactionList.add(new Transaction(0, User.currentUser, item, quantity, dateFormat.format(cal.getTime())));
+            } else {
+                Data.allTransactionList.add(new Transaction(Data.allTransactionList.get(Data.allTransactionList.size()-1).getId()+1, User.currentUser, item, quantity, dateFormat.format(cal.getTime())));
+            }
+            Data.dataUpdate();
+
             Toast.makeText(this, "Item succesfully purchased!", Toast.LENGTH_SHORT).show();
             finish();
         });

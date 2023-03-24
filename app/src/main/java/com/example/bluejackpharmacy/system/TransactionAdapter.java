@@ -6,19 +6,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bluejackpharmacy.Data;
 import com.example.bluejackpharmacy.R;
 import com.example.bluejackpharmacy.object.Transaction;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
 
@@ -51,6 +55,48 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             Picasso.with(holder.itemView.getContext()).load(data.get(position).getItem().getImagePath()).into(holder.transactionImage);
         }
 
+        AtomicInteger quantity = new AtomicInteger(data.get(position).getQuantity());
+        holder.qtyText.setText(String.valueOf(quantity.get()));
+
+        holder.qtyMin.setOnClickListener(e -> {
+            if(quantity.get() <= 1) {
+                quantity.set(1);
+            } else {
+                quantity.set(quantity.get()-1);
+            }
+            holder.qtyText.setText(String.valueOf(quantity.get()));
+        });
+
+        holder.qtyPlus.setOnClickListener(e -> {
+            quantity.set(quantity.get()+1);
+            holder.qtyText.setText(String.valueOf(quantity.get()));
+        });
+
+        holder.qtyText.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus) {
+                quantity.set(Integer.parseInt(holder.qtyText.getText().toString()));
+                holder.qtyText.setText(String.valueOf(quantity.get()));
+            }
+        });
+
+        holder.deleteButton.setOnClickListener(e -> {
+            Data.allTransactionList.remove(data.get(position));
+            Data.dataUpdate();
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, getItemCount());
+            Toast.makeText(e.getContext(), "Sucessfully deleted transactions!", Toast.LENGTH_SHORT).show();
+        });
+
+        holder.saveButton.setOnClickListener(e -> {
+            Data.allTransactionList.get(Data.allTransactionList.indexOf(data.get(position))).setQuantity(quantity.get());
+            Data.dataUpdate();
+            notifyItemChanged(position);
+            notifyItemRangeChanged(position, getItemCount());
+
+            holder.expandableCard.setVisibility(View.GONE);
+            holder.modifyButton.setText(" Modify");
+            Toast.makeText(e.getContext(), "Sucessfully updated transactions!", Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
@@ -67,13 +113,18 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         Button modifyButton;
 
 
+        Button deleteButton, saveButton;
+        ImageButton qtyPlus, qtyMin;
+        EditText qtyText;
+
+
         @SuppressLint("ResourceAsColor")
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            transactionNameText = (TextView) itemView.findViewById(R.id.transactionNameText);
-            transactionDateText = (TextView) itemView.findViewById(R.id.transactionDateText);
-            transactionPriceQtyText = (TextView) itemView.findViewById(R.id.transactionPriceQtyText);
-            transactionTotalPriceText = (TextView) itemView.findViewById(R.id.transactionTotalPriceText);
+            transactionNameText = itemView.findViewById(R.id.transactionNameText);
+            transactionDateText = itemView.findViewById(R.id.transactionDateText);
+            transactionPriceQtyText = itemView.findViewById(R.id.transactionPriceQtyText);
+            transactionTotalPriceText = itemView.findViewById(R.id.transactionTotalPriceText);
 
             transactionImage = itemView.findViewById(R.id.transactionImage);
 
@@ -88,7 +139,13 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
                     modifyButton.setText(" Modify");
                 }
             });
+
+            qtyText = itemView.findViewById(R.id.medicineQuantity);
+            qtyMin = itemView.findViewById(R.id.decreaseQuantity);
+            qtyPlus = itemView.findViewById(R.id.increaseQuantity);
+
+            deleteButton = itemView.findViewById(R.id.transactionDeleteButton);
+            saveButton = itemView.findViewById(R.id.transactionSaveButton);
         }
     }
-
 }

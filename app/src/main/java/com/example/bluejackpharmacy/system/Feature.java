@@ -1,13 +1,18 @@
 package com.example.bluejackpharmacy.system;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class Feature {
 
     public static String getTimeGreetings() {
-        int hour = Calendar.getInstance().HOUR_OF_DAY;
+        DateFormat dateFormat = new SimpleDateFormat("HH");
+        Calendar cal = Calendar.getInstance();
+        int hour = Integer.parseInt(dateFormat.format(cal.getTime()));
 
         if(hour <= 10){
             return "Good Morning";
