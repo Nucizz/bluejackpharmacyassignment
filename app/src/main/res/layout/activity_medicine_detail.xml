@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="400dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/medicineImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/default_med"
+            app:srcCompat="@drawable/default_med"
+            android:scaleType="centerCrop" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/image_appbar_gradient"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#1A000000"
+            />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:drawableLeft="@drawable/back_icon"
+            android:textColor="@color/white"
+            android:padding="15dp"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+            android:textAllCaps="false"
+            style="?android:attr/borderlessButtonStyle"
+            android:fontFamily="@font/sfpro_regular"
+            android:background="@drawable/form_field"
+            app:backgroundTint="#00000000"
+            android:backgroundTint="#00000000"
+            />
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="425dp"
+        android:background="@drawable/bottom_mounted_card"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:id="@+id/medicineInformations"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/medicineNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfpro_semibold"
+                android:paddingTop="10dp"
+                android:text="Title"
+                android:textColor="@color/black"
+                android:textSize="32dp" />
+
+            <TextView
+                android:id="@+id/medicinePriceText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfpro_semibold"
+                android:text="IDR Price"
+                android:textColor="@color/accent_regular"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/medicineManufacturerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfpro_medium"
+                android:paddingTop="10dp"
+                android:text="Produced by manufacturer"
+                android:textColor="@color/dark"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/medicineDescriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfpro_light"
+                android:text="Description of this medicine. Contains something weird or nothing."
+                android:textColor="@color/dark"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MedicinePurchase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/decreaseQuantity"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:fontFamily="@font/sfpro_bold"
+                    android:textSize="20dp"
+                    android:background="@drawable/form_field"
+                    app:backgroundTint="@color/accent_dark"
+                    android:backgroundTint="@color/accent_dark"
+                    />
+
+                <EditText
+                    android:id="@+id/medicineQuantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/sfpro_bold"
+                    android:textSize="24dp"
+                    android:textColor="@color/dark"
+                    android:inputType="number"
+                    android:background="@drawable/form_field" />
+
+                <Button
+                    android:id="@+id/increaseQuantity"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:fontFamily="@font/sfpro_bold"
+                    android:textSize="20dp"
+                    android:background="@drawable/form_field"
+                    app:backgroundTint="@color/accent_dark"
+                    android:backgroundTint="@color/accent_dark"
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/purchaseButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:text="Purchase"
+                android:textColor="@color/white"
+                style="?android:attr/borderlessButtonStyle"
+                android:fontFamily="@font/sfpro_bold"
+                android:textSize="20dp"
+                android:background="@drawable/form_field"
+                app:backgroundTint="@color/accent_dark"
+                android:backgroundTint="@color/accent_dark"
+                />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
