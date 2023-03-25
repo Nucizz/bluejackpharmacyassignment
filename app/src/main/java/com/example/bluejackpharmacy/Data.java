@@ -56,8 +56,7 @@ public class Data {
                 "Entrostop 20 Tablet",
                 "Kalbe Farma",
                 111400.00,
-                "\n" +
-                        "NEO ENTROSTOP merupakan obat untuk mengatasi diare dengan kandungan Attapulgit dan Pektin. Obat ini dapat digunakan untuk mengobati diare non spesifik.",
+                "NEO ENTROSTOP merupakan obat untuk mengatasi diare dengan kandungan Attapulgit dan Pektin. Obat ini dapat digunakan untuk mengobati diare non spesifik.",
                 "https://d2qjkwm11akmwu.cloudfront.net/products/25186_11-1-2022_17-9-28-1665843978.webp"));
         medicineList.add(new Medicine(4,
                 "Cendo Tobroson Minidose 0.6 ml",
@@ -101,6 +100,12 @@ public class Data {
                 38500.00,
                 "IMBOOST KIDS SIRUP merupakan suplemen daya tahan tubuh yang bersifat imunostimulan yang berfungsi untuk menjaga kesehatan tubuh agar tidak mudah sakit. Suplemen ini mengandung Echinacea purpurea herb dry extract dan Zn Piccolinate yang bekerja cepat mengaktifkan sistem daya tahan tubuh namun tetap aman untuk dikonsumsi. Imboost akan bekerja langsung di sistem pertahanan tubuh kita dengan memperbanyak antibodi sehingga daya tahan tubuh lebih kuat melawan serangan virus.",
                 "https://d2qjkwm11akmwu.cloudfront.net/products/656627_29-11-2022_14-39-27.webp"));
+        medicineList.add(new Medicine(11,
+                "Bluejack Corps Bioweapon ",
+                "Bluejack Pharmacy",
+                2800000000.00,
+                "Control the world with a drop of this.",
+                "none"));
     }
 
 }

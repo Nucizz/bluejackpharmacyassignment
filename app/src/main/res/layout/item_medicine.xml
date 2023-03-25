@@ -46,6 +46,7 @@
                     android:id="@+id/medicineNameText"
                     android:text="Title"
                     android:maxLines="1"
+                    android:ellipsize="end"
                     android:fontFamily="@font/sfpro_semibold"
                     android:textColor="@color/black"
                     android:textSize="20dp"

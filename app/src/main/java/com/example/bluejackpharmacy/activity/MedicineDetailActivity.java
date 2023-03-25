@@ -3,12 +3,18 @@ package com.example.bluejackpharmacy.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Layout;
 import android.text.TextWatcher;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.bluejackpharmacy.Data;
 import com.example.bluejackpharmacy.object.Transaction;
@@ -27,9 +33,11 @@ public class MedicineDetailActivity extends Activity {
     int quantity = 1;
     Medicine item;
 
-    TextView medicineNameText, medicineManufacturerText, medicinePriceText, medicineDescriptionText, qtyText;
+    TextView medicineNameText, medicineManufacturerText, medicinePriceText, medicineDescriptionText, qtyText, readMoreButton, readMoreElipsis, showLessButton;
 
     ImageView medicineImage;
+
+    ConstraintLayout expandableCard;
 
     Button qtyPlus, qtyMin, backButton, purchaseButton;
 
@@ -48,7 +56,7 @@ public class MedicineDetailActivity extends Activity {
         medicineDescriptionText = findViewById(R.id.medicineDescriptionText);
 
         medicineNameText.setText(item.getName());
-        medicineManufacturerText.setText(item.getManufacturer());
+        medicineManufacturerText.setText("Manufatured by " + item.getManufacturer());
         medicinePriceText.setText(Feature.getCurrecntyFormat(item.getPrice()));
         medicineDescriptionText.setText(item.getDescription());
 
@@ -99,6 +107,35 @@ public class MedicineDetailActivity extends Activity {
 
             Toast.makeText(this, "Item succesfully purchased!", Toast.LENGTH_SHORT).show();
             finish();
+        });
+
+        readMoreButton = findViewById(R.id.readMoreButton);
+        readMoreElipsis = findViewById(R.id.readMoreButtonElipsis);
+        showLessButton = findViewById(R.id.showLessButton);
+        expandableCard = findViewById(R.id.informationCard);
+        ViewGroup.LayoutParams cardParameter = expandableCard.getLayoutParams();
+
+        if (medicineDescriptionText.getText().length() > 100) {
+            readMoreButton.setVisibility(View.VISIBLE);
+            readMoreElipsis.setVisibility(View.VISIBLE);
+        }
+
+        readMoreButton.setOnClickListener(e -> {
+            medicineDescriptionText.setMaxLines(100);
+            cardParameter.height = ViewGroup.LayoutParams.MATCH_PARENT;
+
+            readMoreButton.setVisibility(View.GONE);
+            readMoreElipsis.setVisibility(View.GONE);
+            showLessButton.setVisibility(View.VISIBLE);
+        });
+
+        showLessButton.setOnClickListener(e -> {
+            medicineDescriptionText.setMaxLines(3);
+            cardParameter.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 425, getResources().getDisplayMetrics());;
+
+            readMoreButton.setVisibility(View.VISIBLE);
+            readMoreElipsis.setVisibility(View.VISIBLE);
+            showLessButton.setVisibility(View.GONE);
         });
     }
 

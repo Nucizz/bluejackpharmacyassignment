@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="400dp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,12 +58,14 @@
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/informationCard"
         android:layout_width="match_parent"
         android:layout_height="425dp"
+        android:minHeight="425dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/bottom_mounted_card"
         android:paddingHorizontal="20dp"
-        android:paddingBottom="50dp"
+        android:paddingBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,18 +108,73 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sfpro_medium"
                 android:paddingTop="10dp"
+                android:maxLines="4"
+                android:ellipsize="end"
                 android:text="Produced by manufacturer"
                 android:textColor="@color/dark"
                 android:textSize="18dp" />
 
-            <TextView
-                android:id="@+id/medicineDescriptionText"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sfpro_light"
-                android:text="Description of this medicine. Contains something weird or nothing."
-                android:textColor="@color/dark"
-                android:textSize="18dp" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/medicineDescriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfpro_light"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:text="Description of this medicine. Contains something weird or nothing."
+                    android:textColor="@color/dark"
+                    android:textSize="18dp"
+                    />
+
+                <TextView
+                    android:id="@+id/readMoreButtonElipsis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="... "
+                    android:visibility="gone"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    android:textColor="@color/dark"
+                    android:background="@color/white"
+                    android:fontFamily="@font/sfpro_light"
+                    android:layout_alignBottom="@id/medicineDescriptionText"
+                    android:layout_toLeftOf="@id/readMoreButton"/>
+
+                <TextView
+                    android:id="@+id/readMoreButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Read more"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    android:textColor="@color/dark"
+                    android:background="@color/white"
+                    android:fontFamily="@font/sfpro_medium"
+                    android:layout_alignBottom="@id/medicineDescriptionText"
+                    android:layout_alignEnd="@id/medicineDescriptionText"/>
+
+                <TextView
+                    android:id="@+id/showLessButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show less"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    android:textColor="@color/dark"
+                    android:background="@color/white"
+                    android:fontFamily="@font/sfpro_medium"
+                    android:layout_below="@id/medicineDescriptionText"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
 
