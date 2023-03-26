@@ -79,6 +79,18 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             }
         });
 
+        holder.modifyButton.setOnClickListener(view -> {
+            if (holder.expandableCard.getVisibility() == View.GONE) {
+                holder.expandableCard.setVisibility(View.VISIBLE);
+                holder.qtyText.setText(String.valueOf(data.get(position).getQuantity()));
+                quantity.set(data.get(position).getQuantity());
+                holder.modifyButton.setText(" Cancel");
+            } else {
+                holder.expandableCard.setVisibility(View.GONE);
+                holder.modifyButton.setText(" Modify");
+            }
+        });
+
         holder.deleteButton.setOnClickListener(e -> {
             Data.allTransactionList.remove(data.get(position));
             Data.dataUpdate();
@@ -130,15 +142,6 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
             expandableCard = itemView.findViewById(R.id.expandableLayout);
             modifyButton = itemView.findViewById(R.id.transactionModifyButton);
-            modifyButton.setOnClickListener(view -> {
-                if (expandableCard.getVisibility() == View.GONE) {
-                    expandableCard.setVisibility(View.VISIBLE);
-                    modifyButton.setText(" Cancel");
-                } else {
-                    expandableCard.setVisibility(View.GONE);
-                    modifyButton.setText(" Modify");
-                }
-            });
 
             qtyText = itemView.findViewById(R.id.medicineQuantity);
             qtyMin = itemView.findViewById(R.id.decreaseQuantity);
