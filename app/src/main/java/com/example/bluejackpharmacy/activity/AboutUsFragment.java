@@ -45,6 +45,7 @@ public class AboutUsFragment extends Fragment {
         mapFragment.getMapAsync(googleMap -> {
             LatLng position = new LatLng(-6.202053, 106.7820726);
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
+            googleMap.addMarker(new MarkerOptions().position(position).title("Bluejack Pharmacy"));
         });
 
         logout = (ImageButton) view.findViewById(R.id.logoutButton);
