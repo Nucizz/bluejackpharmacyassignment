@@ -75,6 +75,10 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         holder.qtyText.setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {
                 quantity.set(Integer.parseInt(holder.qtyText.getText().toString()));
+                if(quantity.get() <= 1) {
+                    Toast.makeText(v.getContext(), "Quantity must be more than 1!", Toast.LENGTH_SHORT).show();
+                    quantity.set(1);;
+                }
                 holder.qtyText.setText(String.valueOf(quantity.get()));
             }
         });

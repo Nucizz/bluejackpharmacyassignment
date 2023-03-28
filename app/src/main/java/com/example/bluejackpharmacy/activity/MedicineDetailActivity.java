@@ -89,6 +89,10 @@ public class MedicineDetailActivity extends Activity {
         qtyText.setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {
                 quantity = Integer.parseInt(qtyText.getText().toString());
+                if(quantity <= 1) {
+                    Toast.makeText(this, "Quantity must be more than 1!", Toast.LENGTH_SHORT).show();
+                    quantity = 1;
+                }
                 updateState();
             }
         });
