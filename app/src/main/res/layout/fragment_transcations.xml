@@ -58,8 +58,10 @@
         android:id="@+id/transcationsView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:listitem="@layout/item_transaction"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:clipToPadding="false"
         android:paddingBottom="100dp"/>
 
     <LinearLayout

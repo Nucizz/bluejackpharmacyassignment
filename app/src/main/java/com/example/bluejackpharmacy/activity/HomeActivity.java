@@ -13,9 +13,6 @@ public class HomeActivity extends FragmentActivity {
 
     BottomNavigationView navbar;
 
-    HomeFragment homePage = new HomeFragment();
-    TranscationsFragment transcationsPage = new TranscationsFragment();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
